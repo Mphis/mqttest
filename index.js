@@ -14,8 +14,10 @@ const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: true,
 });
+console.log('connecting');
 
 client.connect();
+console.log('connected');
 
 client.query('SELECT data_a FROM topic1;', (err, res) => {
   if (err) throw err;
