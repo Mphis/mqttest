@@ -24,7 +24,6 @@ client.query('SELECT data_a FROM topic1;', (err, res) => {
   for (let row of res.rows) {
     console.log(JSON.stringify(row));
   }
-  client.end();
 });
 
 var client_mqtt  = mqtt.connect('ws://mqtt-broker-hackit.herokuapp.com');
@@ -36,7 +35,6 @@ client_mqtt.on('message', function (topic, message) {
     context = message.toString();
     client.query('INSERT INTO topic1 (data_a) VALUES ('+context+');', (err, res) => {
       if (err) throw err;
-      client.end();
     });
 console.log(context)
 })
