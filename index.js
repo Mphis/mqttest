@@ -7,7 +7,7 @@ mqttServ.attachHttpServer(httpServ);
 
 httpServ.listen(process.env.PORT || 8080);
 
-const { Pool } = require('pg'); 
+const Pool = require('pg'); 
 const secrets = require('../middleware/ENV').default;
 const env = process.env.NODE_ENV || 'development';
 let connectionString = {
