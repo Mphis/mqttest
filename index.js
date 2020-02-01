@@ -7,15 +7,15 @@ mqttServ.attachHttpServer(httpServ);
 
 httpServ.listen(process.env.PORT || 8080);
 
-const Pool = require('pg').Pool
-const pool = new Pool({
-  user: 'me',
-  host: 'ec2-3-210-157-123.compute-1.amazonaws.com',
-  database: 'd86bouiv0virpk',
-  password: '4b1b8b8de8af9eae0dc1b66e41b53dfc69fe28320189eaa2bb30406ced2e3dab',
-  port: 5432,
-});
-
+const { Pool } = require('pg'); 
+const secrets = require('../middleware/ENV').default;
+const env = process.env.NODE_ENV || 'development';
+let connectionString = {
+    user: secrets.user,
+    database: secrets.testDb,
+    host: secrets.host
+};
+// checking to know the environment and suitable connection string to use
 if (env === 'development') {
     connectionString.database = secrets.database;
 } else {
