@@ -33,7 +33,7 @@ client_mqtt.on('connect', function () {
 })
 client_mqtt.on('message', function (topic, message) {
     context = message.toString();
-    client.query('INSERT INTO topic1 (data_a) VALUES ('+context+');', (err, res) => {
+    client.query("INSERT INTO topic1 (data_a) VALUES ('"+ context +"');", (err, res) => {
       if (err) throw err;
     });
 console.log(context)
