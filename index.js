@@ -15,5 +15,12 @@ const client = new Client({
   ssl: true,
 });
 
-//client.connect();
-client.on('connect', () => console.log('connected to db'));
+client.connect();
+
+client.query('SELECT data_a FROM topic1;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});
