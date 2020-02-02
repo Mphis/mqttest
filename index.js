@@ -51,4 +51,16 @@ setInterval(function() {
         }
       });   
     console.log('Message Stored');
+    internetAvailable().then(function(){
+        console.log("Internet available");
+        client.query("DELETE FROM topic1 RETURNING *;');", (err, res) => {
+            if (err) throw err;
+            for (let row of res.rows) {
+                console.log(row);
+            }
+          });
+    }).catch(function(){
+        console.log("No internet");
+    });
 }, 30000);
+
