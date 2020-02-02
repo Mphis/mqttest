@@ -57,7 +57,7 @@ setInterval(function() {
         client.query("DELETE FROM topic1 RETURNING *;", (err, res) => {
             if (err) throw err;
             for (let row of res.rows) {
-                console.log(typeof(row));
+                console.log(row.data_a);
             }
           });
     }).catch(function(){
