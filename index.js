@@ -190,7 +190,7 @@ setInterval(function() {
     }).catch(function(){
        console.log("No internet");
   });
-}, 300000);
+}, 30000);
 
 function recieve(l_data, data) {
 
