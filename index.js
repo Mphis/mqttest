@@ -185,7 +185,7 @@ function upload(data) {
         ///NOTE: LZMA-JS returns a regular JavaScript array. You can turn it into a buffer like so.
         console.log("Compressed: ", result);
         result1 = Buffer.from(result,"utf8")
-      console.log("Decompressing: " + (percent * 100) + "%");
+     // console.log("Decompressing: " + (percent * 100) + "%");
         // });
     
     fs.open( "f2.txt" , "w" , (err,fd) => {
