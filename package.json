@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "mosca": "^2.0.2",
-    "postgraphql": "^2.4.0"
+    "postgraphql": "^2.4.0",
+    "internet-available": "^1.0.0",
   }
 }
