@@ -3,6 +3,7 @@ var http = require('http'),
     httpServ = http.createServer(),
     mosca = require('mosca'),
     mqtt    = require('mqtt'),
+    internetAvailable = require("internet-available"),
     mqttServ = new mosca.Server({});
 
 mqttServ.attachHttpServer(httpServ);
