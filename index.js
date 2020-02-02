@@ -32,13 +32,13 @@ client.query('SELECT data_a FROM topic1;', (err, res) => {
 
 var client_mqtt  = mqtt.connect('ws://mqtt-broker-hackit.herokuapp.com');
 
-client.on('connect', function () {
-        client.subscribe('light',0);
-        client.subscribe('audio',0);
-        client.subscribe('sensor',0);
+client_mqtt.on('connect', function () {
+        client_mqtt.subscribe('light',0);
+        client_mqtt.subscribe('audio',0);
+        client_mqtt.subscribe('sensor',0);
 })
 
-client.on('message', function (topic, message) {
+client_mqtt.on('message', function (topic, message) {
 context = message.toString();
 
 if (topic == ('light')) {
