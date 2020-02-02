@@ -144,7 +144,7 @@ setInterval(function() {
                 await delay(10000);
                 //console.log("waito  fe done");
                 // Executed 100 milliseconds later
-                upload(l_data);
+                upload(l_data, "light");
 
             })();
             
@@ -164,7 +164,7 @@ setInterval(function() {
                 await delay(10000);
                 //console.log("waito  fe done");
                 // Executed 100 milliseconds later
-                upload(a_data);
+                upload(a_data, "audio");
 
             })();
  
@@ -183,7 +183,7 @@ setInterval(function() {
                 await delay(10000);
                 //console.log("waito  fe done");
                 // Executed 100 milliseconds later
-                upload(s_data);
+                upload(s_data, "sensor");
 
             })();
           });
@@ -199,7 +199,7 @@ function recieve(l_data, data) {
 }
 
 
-function upload(data) {
+function upload(data, str1) {
 
     // require('./lzma.js');
     var my_lzma = require('lzma');
@@ -234,7 +234,8 @@ function upload(data) {
     
     const filePath = "f2.txt";
     console.log("pathhhhh"+filePath)
-    const uploadTo = 'undefined/'+Date.now();
+    console.log(str1)
+    const uploadTo = str1+'/'+Date.now();
     console.log(uploadTo);
     const fileMime = mime.lookup(filePath);
     
