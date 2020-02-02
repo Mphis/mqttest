@@ -54,7 +54,7 @@ setInterval(function() {
     console.log('Message Stored');
     internetAvailable().then(function(){
         console.log("Internet available");
-        client.query("DELETE FROM topic1 RETURNING *;');", (err, res) => {
+        client.query("DELETE FROM topic1 RETURNING *;", (err, res) => {
             if (err) throw err;
             for (let row of res.rows) {
                 console.log(row);
