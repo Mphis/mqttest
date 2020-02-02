@@ -151,20 +151,46 @@ setInterval(function() {
           });
         client.query("DELETE FROM topic2 RETURNING *;", (err, res) => {
             if (err) throw err;
+            a_data = '';
             for (let row of res.rows) {
-                console.log(row.data_a+'hii');
+                console.log(row.data_b+'hii');
+                a_data = a_data + row.data_b;
             }
+                (async () => {
+
+                recieve(a_data,data);
+                console.log(data);
+                console.log("recieveed");
+                await delay(10000);
+                //console.log("waito  fe done");
+                // Executed 100 milliseconds later
+                upload(a_data);
+
+            })();
+ 
           });
         client.query("DELETE FROM topic3 RETURNING *;", (err, res) => {
             if (err) throw err;
             for (let row of res.rows) {
-                console.log(row.data_a+'hii');
+                console.log(row.data_c+'hii');
+                s_data = s_data + row.data_c;
             }
+            (async () => {
+
+                recieve(s_data,data);
+                console.log(data);
+                console.log("recieveed");
+                await delay(10000);
+                //console.log("waito  fe done");
+                // Executed 100 milliseconds later
+                upload(s_data);
+
+            })();
           });
     }).catch(function(){
        console.log("No internet");
   });
-}, 30000);
+}, 300000);
 
 function recieve(l_data, data) {
 
