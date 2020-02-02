@@ -33,7 +33,7 @@ client.query('SELECT data_a FROM topic1;', (err, res) => {
 var client_mqtt  = mqtt.connect('ws://mqtt-broker-hackit.herokuapp.com');
 
 client_mqtt.on('connect', function () {
-    client_mqtt.subscribe('presence')
+    client_mqtt.subscribe('light')
 })
 client_mqtt.on('message', function (topic, message) {
     context = message.toString();
