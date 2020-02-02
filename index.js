@@ -1,3 +1,4 @@
+//MQTT and temporary database connection
 var http = require('http'),
     httpServ = http.createServer(),
     mosca = require('mosca'),
@@ -19,6 +20,8 @@ console.log('connecting');
 client.connect();
 console.log('connected');
 
+
+//From MQTT to temporary database
 client.query('SELECT data_a FROM topic1;', (err, res) => {
   if (err) throw err;
   for (let row of res.rows) {
@@ -38,3 +41,14 @@ client_mqtt.on('message', function (topic, message) {
     });
 console.log(context)
 })
+
+//5 mins data collection, compression and send to database
+setInterval(function() {
+    client.query('SELECT data_a FROM topic1;', (err, res) => {
+        if (err) throw err;
+        for (let row of res.rows) {
+          console.log(JSON.stringify(row));
+        }
+      });   
+    console.log('Message Stored');
+}, 30000);
